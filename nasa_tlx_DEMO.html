@@ -297,233 +297,121 @@ body{font-family:var(--sans);background:var(--surface);color:var(--ink);font-siz
 #report-print-toolbar.visible{display:flex;align-items:center;gap:10px;padding:14px 28px;background:var(--ink-2);border-top:1px solid rgba(255,255,255,.1)}
 
 /* ── Print ── */
-/* ══════════════════════════════════════
-   DEMO MODE STYLES
-══════════════════════════════════════ */
+/* ══ DEMO MODE ══════════════════════════════════════════ */
+body{margin:0!important}
+#demo-banner{background:linear-gradient(90deg,#1C2340,#0B3D91,#1C2340);color:#fff;padding:9px 20px;font-family:var(--mono);font-size:11px;border-bottom:2px solid var(--nasa-red);display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:250}
+#demo-banner .db-badge{background:var(--nasa-red);color:#fff;font-size:9px;font-weight:500;padding:2px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.6px;flex-shrink:0}
+@keyframes db-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+.db-pulse{animation:db-pulse 2.2s ease-in-out infinite}
+#demo-banner .db-text{opacity:.82}
+#demo-banner .db-cta{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.32);color:#fff;font-family:var(--cond);font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:4px 14px;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .15s;flex-shrink:0}
+#demo-banner .db-cta:hover{background:rgba(255,255,255,.28)}
 
-/* Body reset for iframe embedding */
-body { margin: 0 !important; }
+/* Locked upload slots */
+.demo-locked-slot{position:relative;pointer-events:none!important;user-select:none}
+.demo-locked-slot .slot-lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(244,245,249,.86);border-radius:var(--radius-lg);font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.2px;gap:5px;z-index:5}
 
-/* Demo banner */
-#demo-banner {
-  background: linear-gradient(90deg, #1C2340 0%, #0B3D91 50%, #1C2340 100%);
-  color: #fff;
-  text-align: center;
-  padding: 10px 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.4px;
-  position: relative;
-  z-index: 250;
-  border-bottom: 2px solid var(--nasa-red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-#demo-banner .db-badge {
-  background: var(--nasa-red);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  flex-shrink: 0;
-}
-#demo-banner .db-text { opacity: 0.85; }
-#demo-banner .db-cta {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.35);
-  color: #fff;
-  font-family: var(--cond);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.15s;
-  flex-shrink: 0;
-}
-#demo-banner .db-cta:hover { background: rgba(255,255,255,0.28); }
+/* Disabled buttons */
+.demo-btn-off{opacity:.38!important;cursor:not-allowed!important;pointer-events:none!important}
 
-/* Disabled upload slots in demo mode */
-.demo-locked-slot {
-  position: relative;
-  pointer-events: none !important;
-  opacity: 0.52;
-  cursor: not-allowed !important;
-}
-.demo-locked-slot input[type=file] { pointer-events: none !important; }
-.demo-locked-slot::after {
-  content: '🔒 Demo mode — upload disabled';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(244,245,249,0.88);
-  border-radius: var(--radius-lg);
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--muted);
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
+/* Upgrade CTA */
+#demo-upgrade-cta{background:linear-gradient(135deg,#0B3D91,#1C2340);border:none;border-radius:var(--radius-lg);padding:26px 30px;margin-bottom:20px;color:#fff;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 4px 20px rgba(11,61,145,.25)}
+#demo-upgrade-cta .cta-icon{font-size:34px;flex-shrink:0}
+#demo-upgrade-cta .cta-body{flex:1;min-width:200px}
+#demo-upgrade-cta .cta-body h3{font-family:var(--cond);font-size:16px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;margin-bottom:5px}
+#demo-upgrade-cta .cta-body p{font-size:12px;opacity:.80;line-height:1.6;max-width:520px}
+#demo-upgrade-cta .cta-pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+#demo-upgrade-cta .cta-pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;font-family:var(--mono);font-size:9px;padding:2px 9px;border-radius:20px;letter-spacing:.2px}
+#demo-upgrade-cta .cta-btn{background:var(--nasa-red);color:#fff;font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;padding:11px 22px;border-radius:var(--radius);border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s,transform .1s;white-space:nowrap;flex-shrink:0}
+#demo-upgrade-cta .cta-btn:hover{background:#d42d10;transform:scale(1.02)}
 
-/* Demo action row button states */
-.demo-btn-disabled {
-  opacity: 0.4 !important;
-  cursor: not-allowed !important;
-  pointer-events: none !important;
-}
-
-/* Locked export section overlay */
-.demo-export-lock {
-  position: relative;
-}
-.demo-export-lock::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(244,245,249,0.0);
-  pointer-events: all;
-  cursor: not-allowed;
-  border-radius: var(--radius-lg);
-  z-index: 10;
-}
-
-/* Upgrade CTA card */
-#demo-upgrade-cta {
-  background: linear-gradient(135deg, #0B3D91 0%, #1C2340 100%);
-  border: none;
-  border-radius: var(--radius-lg);
-  padding: 28px 32px;
-  margin-bottom: 20px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 20px rgba(11,61,145,0.25);
-}
-#demo-upgrade-cta .cta-icon {
-  font-size: 36px;
-  flex-shrink: 0;
-}
-#demo-upgrade-cta .cta-body { flex: 1; min-width: 200px; }
-#demo-upgrade-cta .cta-body h3 {
-  font-family: var(--cond);
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-#demo-upgrade-cta .cta-body p {
-  font-size: 12px;
-  opacity: 0.80;
-  line-height: 1.6;
-  max-width: 520px;
-}
-#demo-upgrade-cta .cta-pills {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-#demo-upgrade-cta .cta-pill {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: #fff;
-  font-family: var(--mono);
-  font-size: 9px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.3px;
-}
-#demo-upgrade-cta .cta-btn {
-  background: var(--nasa-red);
-  color: #fff;
-  font-family: var(--cond);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  padding: 12px 24px;
-  border-radius: var(--radius);
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.15s, transform 0.1s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-#demo-upgrade-cta .cta-btn:hover { background: #d42d10; transform: scale(1.02); }
-
-/* Demo watermark on export/download buttons */
-.demo-watermark-btn {
-  position: relative;
-}
-.demo-watermark-btn::before {
-  content: '🔒';
-  margin-right: 4px;
-}
-
-/* Pulsing demo indicator on topbar badge */
-@keyframes demo-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-.demo-pulse { animation: demo-pulse 2.4s ease-in-out infinite; }
-
-/* Iframe safe: remove sticky topbar when embedded */
-.embedded #topbar { position: relative !important; }
-
-@media print { #demo-banner, #demo-upgrade-cta { display: none !important; } }
+/* How-to walkthrough */
+#demo-howto{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
+#demo-howto h3{font-family:var(--cond);font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.howto-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.howto-step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.howto-step .hs-num{width:22px;height:22px;border-radius:50%;background:var(--nasa-blue);color:#fff;font-family:var(--mono);font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.howto-step .hs-body .hs-title{font-family:var(--cond);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;color:var(--ink-2);margin-bottom:2px}
+.howto-step .hs-body .hs-desc{font-size:11px;color:var(--muted);line-height:1.4}
+.embedded #topbar{position:relative!important}
+@media print{#demo-banner,#demo-upgrade-cta,#demo-howto{display:none!important}}
 </style>
 </head>
 <body>
 
-<!-- ── Demo Banner ── -->
+<!-- Demo banner -->
 <div id="demo-banner">
-  <span class="db-badge demo-pulse">Demo</span>
-  <span class="db-text">Interactive demo — pre-loaded with a representative aerospace operator workload dataset. CSV upload and data export are disabled in this preview.</span>
+  <span class="db-badge db-pulse">Demo</span>
+  <span class="db-text">Interactive demo — pre-loaded aerospace operator dataset. CSV upload &amp; data export are disabled.</span>
   <a href="#demo-upgrade-cta" class="db-cta">Get Full Access ↓</a>
 </div>
 
-<!-- ── Topbar ── -->
+<!-- Topbar -->
 <div id="topbar">
   <div class="logo-mark">NASA<br>TLX</div>
   <h1>Task Load Index</h1>
   <span class="subtitle">Workload Analysis Tool</span>
   <div class="spacer"></div>
-  <span class="phase-badge">v3.0 · INTERACTIVE DEMO</span>
-  <button class="btn" id="btn-export-report" onclick="showDemoUpgradePrompt()" style="background:var(--nasa-red);color:#fff;font-size:11px;padding:6px 14px;margin-left:6px;opacity:0.7">🔒 Export Report</button>
+  <span class="phase-badge">INTERACTIVE DEMO</span>
+  <button class="btn" onclick="showDemoUpgradePrompt()" style="background:var(--nasa-red);color:#fff;font-size:11px;padding:6px 14px;margin-left:6px;opacity:.75;cursor:pointer">🔒 Export Report</button>
 </div>
 
 <div id="app">
 
-<!-- §0 Demo intro -->
+<!-- Intro -->
 <div class="alert alert-info">
   <span class="alert-icon">ℹ</span>
-  <div><strong>NASA Task Load Index (Hart &amp; Staveland, 1988) — Interactive Demo.</strong> This demo is pre-loaded with a representative multi-task aerospace operator workload dataset. Explore all analysis panels, charts, and parametric model outputs below. CSV upload, custom data entry, and report export require the full licensed tool.</div>
+  <div><strong>NASA Task Load Index (Hart &amp; Staveland, 1988) — Interactive Demo.</strong> This demo is pre-loaded with a 6-participant, 5-task aerospace operator workload dataset. All charts, analysis panels, and the parametric model are fully interactive. CSV upload and report export require the full licensed tool.</div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     UPGRADE CTA
-════════════════════════════════════════════════════════ -->
+<!-- How-to walkthrough -->
+<div id="demo-howto">
+  <h3>How to use this demo</h3>
+  <div class="howto-steps">
+    <div class="howto-step">
+      <div class="hs-num">1</div>
+      <div class="hs-body">
+        <div class="hs-title">Dataset pre-loaded</div>
+        <div class="hs-desc">A 6-participant aerospace study loads automatically when the page opens — no upload needed.</div>
+      </div>
+    </div>
+    <div class="howto-step">
+      <div class="hs-num">2</div>
+      <div class="hs-body">
+        <div class="hs-title">Click "Run Demo"</div>
+        <div class="hs-desc">Press the blue <strong>▶ Run Demo Analysis</strong> button below to generate all reports and charts.</div>
+      </div>
+    </div>
+    <div class="howto-step">
+      <div class="hs-num">3</div>
+      <div class="hs-body">
+        <div class="hs-title">Scroll &amp; explore</div>
+        <div class="hs-desc">Scroll down through 9 sections: scores, charts, heatmap, participant profiles, statistics, and sensitivity analysis.</div>
+      </div>
+    </div>
+    <div class="howto-step">
+      <div class="hs-num">4</div>
+      <div class="hs-body">
+        <div class="hs-title">Interact with charts</div>
+        <div class="hs-desc">Hover charts for tooltips, switch participant profiles, drag sensitivity sliders, and click tabs to explore all data views.</div>
+      </div>
+    </div>
+    <div class="howto-step">
+      <div class="hs-num">5</div>
+      <div class="hs-body">
+        <div class="hs-title">Get full access</div>
+        <div class="hs-desc">To run analysis on your own data, scroll to the upgrade panel or click "Get Full Access" in the banner above.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Upgrade CTA -->
 <div id="demo-upgrade-cta">
   <div class="cta-icon">⬡</div>
   <div class="cta-body">
     <h3>Unlock the Full NASA-TLX Analysis Tool</h3>
-    <p>The full tool lets you upload your own study data via CSV, run weighted or raw TLX analysis on any dataset, export branded PDF reports, and use the complete SysML parametric model engine — all in a single self-contained HTML file with no server required.</p>
+    <p>Upload your own study data via CSV, run weighted or raw TLX analysis, export branded PDF reports, and use the complete SysML parametric model — all in a single self-contained file with no server required.</p>
     <div class="cta-pills">
       <span class="cta-pill">✓ Custom CSV upload</span>
       <span class="cta-pill">✓ Weighted &amp; Raw TLX</span>
@@ -534,48 +422,48 @@ body { margin: 0 !important; }
       <span class="cta-pill">✓ Single HTML file</span>
     </div>
   </div>
-  <a href="mailto:contact@example.com?subject=NASA-TLX Full Tool Access" class="cta-btn">Request Full Access →</a>
+  <a href="mailto:contact@example.com?subject=NASA-TLX Full Tool Access" class="cta-btn" target="_parent">Request Full Access →</a>
 </div>
 
-<!-- ════════════════════════════════════════════════════════
-     §1  DATA INPUT  (Demo — locked)
-════════════════════════════════════════════════════════ -->
+<!-- §1 Data Input — Demo locked -->
 <div class="section-header">
   <span class="section-num">01</span>
   <h2>Data Input</h2>
   <span class="section-desc">Demo mode — pre-loaded aerospace operator dataset</span>
 </div>
 <div class="card">
-  <div class="alert alert-warn" style="margin-bottom:16px">
-    <span class="alert-icon">🔒</span>
-    <div><strong>Demo mode active.</strong> CSV upload is disabled. The tool is pre-loaded with a representative 6-participant × 5-task aerospace operator workload study. All analysis panels, charts, and parametric model outputs below reflect this dataset and are fully interactive.</div>
-  </div>
   <div class="upload-grid">
-    <div class="upload-slot demo-locked-slot" id="slot-ratings">
+    <div class="upload-slot demo-locked-slot" id="slot-ratings" style="border-color:var(--success);background:var(--success-light)">
       <div class="slot-icon blue">📊</div>
       <div class="slot-title">ratings.csv</div>
-      <div class="slot-desc">6 subscale scores (0–100) per participant per task</div>
-      <div class="slot-status ok" id="status-ratings">✓ Demo dataset loaded</div>
+      <div class="slot-desc">6 subscale scores per participant per task</div>
+      <div class="slot-status ok" id="status-ratings">✓ Demo dataset ready</div>
+      <div class="slot-lock-overlay">🔒 Demo — upload disabled</div>
     </div>
-    <div class="upload-slot demo-locked-slot" id="slot-weights">
+    <div class="upload-slot demo-locked-slot" id="slot-weights" style="border-color:var(--success);background:var(--success-light)">
       <div class="slot-icon amber">⚖️</div>
       <div class="slot-title">weights.csv</div>
       <div class="slot-desc">Pairwise comparison tallies</div>
-      <div class="slot-status ok" id="status-weights">✓ Demo weights loaded</div>
+      <div class="slot-status ok" id="status-weights">✓ Demo weights ready</div>
+      <div class="slot-lock-overlay">🔒 Demo — upload disabled</div>
     </div>
-    <div class="upload-slot demo-locked-slot" id="slot-project">
+    <div class="upload-slot demo-locked-slot" id="slot-project" style="border-color:var(--success);background:var(--success-light)">
       <div class="slot-icon green">📋</div>
       <div class="slot-title">project.csv</div>
-      <div class="slot-desc">Task labels, participant IDs, study metadata</div>
-      <div class="slot-status ok" id="status-project">✓ Demo metadata loaded</div>
+      <div class="slot-desc">Task labels, participant IDs, metadata</div>
+      <div class="slot-status ok" id="status-project">✓ Demo metadata ready</div>
+      <div class="slot-lock-overlay">🔒 Demo — upload disabled</div>
     </div>
   </div>
-  <div class="action-row">
-    <button class="btn btn-primary" onclick="loadSampleData()" id="btn-demo-load">▶ Reload Demo Dataset</button>
-    <span class="btn btn-secondary demo-btn-disabled" title="Upload disabled in demo mode">🔒 Upload Custom CSV</span>
+  <div class="action-row" style="margin-top:4px">
+    <button class="btn btn-primary" id="btn-run-demo" onclick="runDemoAnalysis()" style="font-size:13px;padding:10px 22px">▶ Run Demo Analysis</button>
+    <span class="btn btn-secondary demo-btn-off">🔒 Upload Custom CSV</span>
     <span style="flex:1"></span>
-    <span class="btn btn-ghost demo-btn-disabled demo-watermark-btn" title="Disabled in demo">ratings template</span>
-    <span class="btn btn-ghost demo-btn-disabled demo-watermark-btn" title="Disabled in demo">weights template</span>
+    <span class="btn btn-ghost demo-btn-off">🔒 ratings template</span>
+    <span class="btn btn-ghost demo-btn-off">🔒 weights template</span>
+  </div>
+  <div id="demo-run-hint" style="margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--nasa-blue);display:flex;align-items:center;gap:6px">
+    <span style="font-size:14px">👆</span> Click <strong style="margin:0 3px">▶ Run Demo Analysis</strong> above to generate all workload scores, charts, and insights from the pre-loaded dataset.
   </div>
 </div>
 
@@ -642,8 +530,8 @@ body { margin: 0 !important; }
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">SUMMARY STATISTICS</span>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-ghost demo-watermark-btn demo-btn-disabled" onclick="showDemoUpgradePrompt()" title="Export disabled in demo">Export CSV</button>
-        <button class="btn btn-ghost demo-watermark-btn demo-btn-disabled" onclick="showDemoUpgradePrompt()" title="Export disabled in demo">Export JSON</button>
+        <button class="btn btn-ghost demo-btn-off" onclick="showDemoUpgradePrompt()">🔒 Export CSV</button>
+        <button class="btn btn-ghost demo-btn-off" onclick="showDemoUpgradePrompt()">🔒 Export JSON</button>
       </div>
     </div>
     <table class="val-table"><thead><tr><th>Metric</th><th>Value</th><th>Detail</th></tr></thead><tbody id="summary-stats-body"></tbody></table>
@@ -891,7 +779,7 @@ PF,2
 EF,2
 FR,1`,
   projectCSV:`study_id,operator,date,description
-AES-2024-OWL,Aerospace Human Factors Lab,2024-11-08,Multi-phase flight operator workload assessment across five representative mission phases — pre-flight through emergency response`
+AES-2024-OWL,Aerospace Human Factors Lab,2024-11-08,Multi-phase flight operator workload assessment across five representative mission phases`
 };
 
 /* ── CSV Parser ── */
@@ -1526,8 +1414,9 @@ function updateSensitivityCharts(){
 function renderInsightsPanel(){
   const insights=generateInsights();
   document.getElementById('insights-list').innerHTML=insights.map(i=>`<li class="insight-item ${i.type}"><span class="insight-icon">${i.icon}</span><span>${i.text}</span></li>`).join('');
-  // Demo mode: export button stays locked (openReportModal is overridden)
-  // btn-export-report intentionally not enabled here
+  // Enable report export button now that all analysis is complete
+  const btn = document.getElementById('btn-export-report');
+  if(btn) btn.disabled = false;
 }
 
 /* ── Generic tab switcher ── */
@@ -1564,43 +1453,17 @@ function clearAll(){
   document.getElementById('status-weights').textContent='Optional — Raw TLX if absent';
   document.getElementById('status-project').textContent='Optional';
   document.getElementById('btn-run').disabled=true;
+  const expBtn = document.getElementById('btn-export-report');
+  if(expBtn) expBtn.disabled = true;
   ['validation-panel','model-panel','results-panel','viz-panel','participant-panel','stats-panel','sensitivity-panel','insights-panel'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('log-panel').innerHTML='';
   Object.keys(CHARTS).forEach(k=>destroyChart(k));
 }
 
-/* ══════════════════════════════════════════════════════
-   DEMO MODE — locked handlers (overrides defined after all functions below)
-══════════════════════════════════════════════════════ */
-
-/* Upgrade prompt — smooth scroll to CTA */
-function showDemoUpgradePrompt(){
-  const cta = document.getElementById('demo-upgrade-cta');
-  if(cta){
-    cta.scrollIntoView({behavior:'smooth', block:'center'});
-    cta.style.outline = '3px solid var(--nasa-red)';
-    cta.style.outlineOffset = '4px';
-    setTimeout(()=>{ cta.style.outline=''; cta.style.outlineOffset=''; }, 1800);
-  }
-}
-
-/* ══════════════════════════════════════════════════════
-   DEMO MODE — upgrade prompt helper
-══════════════════════════════════════════════════════ */
-
-/* ── Auto-load on page ready ── */
+/* ── Init ── */
 log('NASA-TLX Demo v3.0 initialized','ok');
-log('Demo mode: upload disabled — pre-loaded aerospace operator dataset active','warn');
-log('Auto-loading 6-participant × 5-task aerospace study...','ok');
-window.addEventListener('load', function(){
-  try { if(window.self !== window.top) document.body.classList.add('embedded'); } catch(e){}
-  setTimeout(function(){
-    loadSampleData();
-    const runBtn = document.getElementById('btn-run');
-    if(runBtn) runBtn.style.display = 'none';
-  }, 350);
-});
-
+log('Demo dataset: 6-participant × 5-task aerospace operator workload study','ok');
+log('Press "▶ Run Demo Analysis" to generate all reports and charts.','ok');
 
 /* ═══════════════════════════════════════════════════════════
    PHASE 3 — REPORT ENGINE
@@ -1883,18 +1746,102 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
 });
 
-/* ══════════════════════════════════════════════════════
-   DEMO MODE — FINAL OVERRIDES
-   These MUST be the last function declarations in this
-   script so they supersede all earlier definitions.
-══════════════════════════════════════════════════════ */
-function handleUpload()  { showDemoUpgradePrompt(); return false; }
-function clearAll()      { loadSampleData(); }
-function exportCSV()     { showDemoUpgradePrompt(); }
-function exportJSON()    { showDemoUpgradePrompt(); }
+/* ════════════════════════════════════════════════════════
+   DEMO MODE — all overrides LAST so they win over earlier
+   declarations of the same function names.
+════════════════════════════════════════════════════════ */
+
+/* Scroll-to-CTA prompt */
+function showDemoUpgradePrompt(){
+  const cta = document.getElementById('demo-upgrade-cta');
+  if(!cta) return;
+  cta.scrollIntoView({behavior:'smooth', block:'center'});
+  cta.style.outline = '3px solid var(--nasa-red)';
+  cta.style.outlineOffset = '4px';
+  setTimeout(()=>{ cta.style.outline=''; cta.style.outlineOffset=''; }, 1800);
+}
+
+/* Core demo runner — loads sample data then triggers analysis */
+function runDemoAnalysis(){
+  const btn = document.getElementById('btn-run-demo');
+  const hint = document.getElementById('demo-run-hint');
+  if(btn){ btn.textContent = '⏳ Running analysis…'; btn.disabled = true; }
+  if(hint){ hint.style.display = 'none'; }
+
+  /* Use the same parseCSV / validate pipeline but bypass DOM slot updates */
+  const rParsed = parseCSV(SAMPLE.ratingsCSV);
+  const wParsed = parseCSV(SAMPLE.weightsCSV);
+  const pParsed = parseCSV(SAMPLE.projectCSV);
+
+  const rVal = validateRatings(rParsed);
+  const wVal = validateWeights(wParsed);
+
+  if(rVal.issues.length || wVal.issues.length){
+    log('Demo dataset validation error: ' + [...rVal.issues,...wVal.issues].join('; '), 'err');
+    if(btn){ btn.textContent = '▶ Run Demo Analysis'; btn.disabled = false; }
+    return;
+  }
+
+  MODEL.ratingsData = rParsed;
+  MODEL.weightsData = wParsed;
+  MODEL.projectData = pParsed;
+  log('Demo dataset validated and loaded (30 observations, 6 participants, 5 tasks)', 'ok');
+
+  /* Run the standard analysis pipeline */
+  MODEL.isWeighted = true;
+  MODEL.weights = calcWeights(MODEL.weightsData);
+  MODEL.sensWeights = {...MODEL.weights};
+  log('Method: Weighted TLX (pairwise-derived weights)', 'ok');
+
+  MODEL.scores = MODEL.ratingsData.rows.map(row=>({
+    participant: row.participant_id, task: row.task_id,
+    MD: parseFloat(row.MD), PD: parseFloat(row.PD), TD: parseFloat(row.TD),
+    PF: parseFloat(row.PF), EF: parseFloat(row.EF), FR: parseFloat(row.FR),
+    tlx: parseFloat(calcTLX(row, MODEL.weights, true).toFixed(2))
+  }));
+  MODEL.taskScores = aggregateByTask(MODEL.scores);
+  MODEL.participantScores = aggregateByParticipant(MODEL.scores);
+  log(`Scores computed: ${MODEL.scores.length} observations across ${MODEL.taskScores.length} tasks`, 'ok');
+
+  /* Render all panels */
+  renderValidationPanel();
+  renderModelPanel();
+  renderResultsPanel();
+  renderVizPanel();
+  renderParticipantPanel();
+  renderStatsPanel();
+  renderSensitivityPanel();
+  renderInsightsPanel();
+
+  /* Show panels */
+  ['validation-panel','model-panel','results-panel','viz-panel',
+   'participant-panel','stats-panel','sensitivity-panel','insights-panel']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.style.display = 'block';
+    });
+
+  /* Update button */
+  if(btn){ btn.textContent = '✓ Demo Running — Click to Reload'; btn.disabled = false; }
+
+  /* Scroll to results */
+  setTimeout(()=>{
+    const vp = document.getElementById('validation-panel');
+    if(vp) vp.scrollIntoView({behavior:'smooth'});
+  }, 200);
+}
+
+/* Lock all data-mutating actions */
+function handleUpload()     { showDemoUpgradePrompt(); return false; }
+function clearAll()         { runDemoAnalysis(); }  /* reload demo instead of clearing */
+function exportCSV()        { showDemoUpgradePrompt(); }
+function exportJSON()       { showDemoUpgradePrompt(); }
 function downloadTemplate() { showDemoUpgradePrompt(); }
 function openReportModal()  { showDemoUpgradePrompt(); }
 function printReport()      { showDemoUpgradePrompt(); }
+
+/* Detect iframe embedding */
+try { if(window.self !== window.top) document.body.classList.add('embedded'); } catch(e){}
 
 </script>
 <!-- ═══════════════════════════════════════════════════════════
