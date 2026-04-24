@@ -3851,6 +3851,6 @@ try { if(window.self !== window.top) document.body.classList.add('embedded'); } 
     <div id="report-body">
         <!-- Content injected by buildReport() before window.print() -->
     </div>
-
+ <script>// Report document height to parent page for auto-sizing function reportHeight() { window.parent.postMessage({ type: 'tlx-demo-height', height: document.body.scrollHeight }, '*'); } // Report after initial load and after charts render window.addEventListener('load', function() { setTimeout(reportHeight, 800); setTimeout(reportHeight, 2500); });</script>
 </body>
 </html>
